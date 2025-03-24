@@ -2,9 +2,12 @@
 interface Props {
   href: string;
   title: string;
+  attributes?: Record<string, string>;
 }
 
-const { href, title }: Props = Astro.props;
+const { href, title, ...attributes }: Props = Astro.props;
 ---
 
-<a href={href}>{title}</a>
+<a href={href} {...attributes} class="underline">
+  {title}
+</a>
