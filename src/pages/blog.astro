@@ -4,6 +4,9 @@ import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
 console.log(allBlogPosts);
+allBlogPosts.map((post: any) => {
+  console.log(post.data.tags);
+});
 ---
 
 <Layout title="Blog">
@@ -12,6 +15,8 @@ console.log(allBlogPosts);
       allBlogPosts.map((post: any) => (
         <li>
           <a href={`/posts/${post.id}`}>{post.data.title}</a>
+          <p>{post.data.pubDate.toLocaleDateString()}</p>
+          <p>{post.data.tags.join(", ")}</p>
         </li>
       ))
     }
