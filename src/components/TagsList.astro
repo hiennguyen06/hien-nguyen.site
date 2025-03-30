@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const allBlogPosts = await getCollection("blog");
+const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
+---
+
+<ul class="flex gap-2 justify-center">
+  {
+    tags.map((tag) => (
+      <li class="border border-gray-300 border-dashed rounded-md p-2">
+        <a class="" href={`/tags/${tag}`}>
+          {tag}
+        </a>
+      </li>
+    ))
+  }
+</ul>

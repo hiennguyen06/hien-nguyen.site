@@ -8,6 +8,6 @@ interface Props {
 const { href, title, ...attributes }: Props = Astro.props;
 ---
 
-<a href={href} {...attributes} class="underline">
+<a href={href} {...attributes} class="hover:underline">
   {title}
 </a>

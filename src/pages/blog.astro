@@ -1,16 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import TagsList from "../components/TagsList.astro";
 
 const allBlogPosts = await getCollection("blog");
-console.log(allBlogPosts);
-allBlogPosts.map((post: any) => {
-  console.log(post.data.tags);
-});
 ---
 
 <Layout title="Blog">
-  <ul>
+  <TagsList />
+  <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post: any) => (
         <li>
