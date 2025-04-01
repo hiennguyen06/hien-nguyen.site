@@ -1,19 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
 const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
+const isActive = (tag: string) => Astro.params.tag === tag;
 ---
 
-<ul class="flex gap-2 justify-center">
-  {
-    tags.map((tag) => (
-      <li class="border border-gray-300 border-dashed rounded-md p-2">
-        <a class="" href={`/tags/${tag}`}>
-          {tag}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div class="flex gap-2 py-4">
+  <span class="text-black">Tags:</span>
+  <ul class="flex justify-center gap-2">
+    {
+      tags.map((tag) => (
+        <li
+          class={`underline ${isActive(tag) ? "text-black" : "text-gray-500"} `}
+        >
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

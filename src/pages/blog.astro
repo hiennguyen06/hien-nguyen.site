@@ -11,10 +11,27 @@ const allBlogPosts = await getCollection("blog");
   <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post: any) => (
-        <li>
-          <a href={`/posts/${post.id}`}>{post.data.title}</a>
-          <p>{post.data.pubDate.toLocaleDateString()}</p>
-          <p>{post.data.tags.join(", ")}</p>
+        <li class="border-b border-gray-400 py-4">
+          <div class="flex gap-2">
+            <p>
+              {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric",
+              })}
+            </p>
+            <a class="undeline text-black" href={`/posts/${post.id}`}>
+              {post.data.title}
+            </a>
+          </div>
+          <ul class="flex gap-2">
+            {post.data.tags.map((tag: string) => (
+              <li>
+                <a class=" text-gray-400" href={`/tags/${tag}`}>
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
         </li>
       ))
     }
