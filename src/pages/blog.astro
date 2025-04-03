@@ -11,19 +11,20 @@ const allBlogPosts = await getCollection("blog");
   <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post: any) => (
-        <li class="border-b border-gray-400 py-4">
-          <div class="flex gap-2">
-            <p>
-              {new Date(post.data.pubDate).toLocaleDateString("en-US", {
-                month: "long",
-                year: "numeric",
-              })}
-            </p>
-            <a class="undeline text-black" href={`/posts/${post.id}`}>
-              {post.data.title}
-            </a>
-          </div>
-          <ul class="flex gap-2">
+        <li class="border rounded-md border-gray-300 p-4">
+          <a href={`/posts/${post.id}`}>
+            <article class="">
+              <span class="text-gray-400 text-sm">
+                {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+              <h2>{post.data.title}</h2>
+            </article>
+          </a>
+          {/* <ul class="flex gap-2 text-sm justify-end">
             {post.data.tags.map((tag: string) => (
               <li>
                 <a class=" text-gray-400" href={`/tags/${tag}`}>
@@ -31,7 +32,7 @@ const allBlogPosts = await getCollection("blog");
                 </a>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </li>
       ))
     }
