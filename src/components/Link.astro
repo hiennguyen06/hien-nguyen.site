@@ -6,8 +6,13 @@ interface Props {
 }
 
 const { href, title, ...attributes }: Props = Astro.props;
+const isLinkActive = Astro.url.pathname === href;
 ---
 
-<a href={href} {...attributes} class="text-lg">
+<a
+  href={href}
+  {...attributes}
+  class={`text-lg ${isLinkActive ? "underline text-black" : "text-gray-500"} `}
+>
   {title}
 </a>

@@ -11,8 +11,8 @@ const allBlogPosts = await getCollection("blog");
   <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post: any) => (
-        <li class="border rounded-md border-gray-300 p-4">
-          <a href={`/posts/${post.id}`}>
+        <li class="rounded-md border-gray-300 py-2">
+          <a href={`/posts/${post.id}`} class="">
             <article class="">
               <span class="text-gray-400 text-sm">
                 {new Date(post.data.pubDate).toLocaleDateString("en-US", {
@@ -21,7 +21,7 @@ const allBlogPosts = await getCollection("blog");
                   year: "numeric",
                 })}
               </span>
-              <h2>{post.data.title}</h2>
+              <h2 class="hover:underline">{post.data.title}</h2>
             </article>
           </a>
           {/* <ul class="flex gap-2 text-sm justify-end">

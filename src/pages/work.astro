@@ -7,10 +7,14 @@ console.log(projects);
 
 interface Project {
   id: string;
+  collection: string;
   data: {
     title: string;
-    image: string;
+    pubDate: Date;
     tags: string[];
+    image: string;
+    url?: string;
+    external?: boolean;
   };
 }
 ---
@@ -29,7 +33,15 @@ interface Project {
               />
             </div>
             <div class="">
-              <a href={project.id}>{project.data.title}</a>
+              <a
+                href={
+                  project.data.external
+                    ? project.data.url
+                    : `/projects/${project.id}`
+                }
+              >
+                {project.data.title}
+              </a>
               <ul class="flex gap-2 text-sm">
                 {project.data.tags.map((tag: string) => {
                   return <li class="text-sm text-gray-500">{tag}</li>;
