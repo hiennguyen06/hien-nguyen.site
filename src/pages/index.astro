@@ -1,12 +1,72 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-
+import { Image } from "astro:assets";
+import profilePicture from "../assets/profile-picture.jpg";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const lastUpdated = new Date("2025-04-06");
 ---
 
 <Layout title="Home">
-  <Welcome><span>Hello World</span></Welcome>
-  <div class="grid grid-cols-3 gap-4"></div>
+  <main>
+    <!-- <div class="flex justify-center mb-4">
+      <Image
+        src={profilePicture}
+        alt="A photo of me"
+        width={1600}
+        height={1200}
+        loading="lazy"
+      />
+    </div> -->
+    <section class="flex flex-col gap-4">
+      <p>
+        Front-end developer based in Melbourne. I'm curious about design, code,
+        data and how people interact with technology.
+      </p>
+      <p>
+        On the side, I like <a class="underline" href="/photography"
+          >photography</a
+        >, <a class="underline" href="/running">running</a> and logging <a
+          class="underline">movies</a
+        >, <a class="underline" href="/books">books</a> and <a class="underline"
+          >albums</a
+        > and I've been a volunteer of the Altona North Coder Dojo code club community
+        since 2022.
+      </p>
+
+      <p>
+        This website is always evolving and was built to document my interests
+        and hobbies. It was last updated on <time
+          datetime={lastUpdated.toISOString()}
+          >{lastUpdated.toLocaleDateString()}</time
+        >.
+      </p>
+      <section
+        class="flex flex-col gap-y-4 mt-2 border-t border-dashed border-gray-200 pt-4"
+      >
+        <h2 class="text-sm text-gray-500">Connect</h2>
+        <ul class="flex flex-row gap-4 text-sm">
+          <li>
+            <a href="" class="underline">Email</a>
+          </li>
+          <li>
+            <a href="" class="underline">GitHub</a>
+          </li>
+          <li>
+            <a href="" class="underline">CodePen</a>
+          </li>
+          <li>
+            <a href="" class="underline">Are.na</a>
+          </li>
+          <li>
+            <a href="" class="underline">Bluesky</a>
+          </li>
+          <li>
+            <a href="" class="underline">LinkedIn</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </main>
 </Layout>

@@ -4,4 +4,11 @@
   body {
     font-family: "Roboto Mono", monospace;
   }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: 70ch;
+  }
 }
