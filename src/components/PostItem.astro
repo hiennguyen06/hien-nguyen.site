@@ -1,0 +1,18 @@
+---
+const { post } = Astro.props;
+---
+
+<a href={`/posts/${post.id}`} class="">
+  <article class="flex flex-row gap-8">
+    <span class="text-gray-400">
+      {
+        new Date(post.data.pubDate).toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+      }
+    </span>
+    <h2 class="hover:underline">{post.data.title}</h2>
+  </article>
+</a>
