@@ -8,12 +8,12 @@ const isActive = (tag: string) => Astro.params.tag === tag;
 
 <div class="flex gap-2 py-4">
   <span class="text-black">Tags:</span>
-  <ul class="flex justify-center gap-2">
+  <ul class="flex justify-center gap-1 flex-wrap">
     {
       tags.map((tag) => (
         <li>
           <a
-            class={`hover:underline ${isActive(tag) ? "underline text-black" : "text-gray-500"} `}
+            class={` border rounded-full px-2 py-1 ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
             href={`/tags/${tag}`}
           >
             {tag}

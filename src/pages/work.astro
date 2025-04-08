@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-console.log(projects);
 
 interface Project {
   id: string;
@@ -26,7 +25,7 @@ interface Project {
     {
       projects.map((project: Project) => {
         return (
-          <li class="flex flex-col gap-4">
+          <li class="flex flex-col gap-">
             <div class="relative aspect-[4/3] w-full overflow-hidden">
               <img
                 src={project.data.image}
@@ -44,9 +43,9 @@ interface Project {
               >
                 {project.data.title}
               </a>
-              <ul class="flex gap-2 text-sm">
+              <ul class="flex gap-2">
                 {project.data.tags.map((tag: string) => {
-                  return <li class="text-sm text-gray-500">{tag}</li>;
+                  return <li class="text-gray-500">{tag}</li>;
                 })}
               </ul>
             </div>

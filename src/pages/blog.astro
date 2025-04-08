@@ -8,16 +8,16 @@ const allBlogPosts = await getCollection("blog");
 
 <Layout title="Blog">
   <TagsList />
-  <ul class="flex flex-col gap-4 border-t border-dashed border-gray-200">
+  <ul class="flex flex-col gap-4 mt-4 border-dashed border-gray-200">
     {
       allBlogPosts.map((post: any) => (
         <li class="rounded-md border-gray-300 py-2">
           <a href={`/posts/${post.id}`} class="">
-            <article class="">
-              <span class="text-gray-400 text-sm">
+            <article class="flex flex-row gap-8">
+              <span class="text-gray-400 ">
                 {new Date(post.data.pubDate).toLocaleDateString("en-US", {
                   day: "numeric",
-                  month: "numeric",
+                  month: "short",
                   year: "numeric",
                 })}
               </span>
