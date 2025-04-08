@@ -6,18 +6,15 @@ const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
 const isActive = (tag: string) => Astro.params.tag === tag;
 ---
 
-<div class="flex gap-2 py-4">
+<div class="flex gap-2 py-4 items-center">
   <span class="text-black">Tags:</span>
-  <ul class="flex justify-center gap-1 flex-wrap">
+  <ul class="flex gap-1 flex-wrap">
     {
       tags.map((tag) => (
-        <li>
-          <a
-            class={` border rounded-full px-2 py-1 ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
-            href={`/tags/${tag}`}
-          >
-            {tag}
-          </a>
+        <li
+          class={` border rounded-full px-2 py-0.5 ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
+        >
+          <a href={`/tags/${tag}`}>{tag}</a>
         </li>
       ))
     }
