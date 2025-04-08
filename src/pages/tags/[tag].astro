@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import TagsList from "../../components/TagsList.astro";
-import PostItem from "../../components/PostItem.astro";
+import PostListItem from "../../components/PostListItem.astro";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -21,13 +21,12 @@ export async function getStaticPaths() {
   });
 }
 
-const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
 <Layout title="Tags">
   <TagsList />
   <ul class="flex flex-col gap-4 mt-4">
-    {posts.map((post) => <PostItem post={post} />)}
+    {posts.map((post) => <PostListItem post={post} />)}
   </ul>
 </Layout>
