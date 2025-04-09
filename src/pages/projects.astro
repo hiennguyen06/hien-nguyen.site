@@ -3,7 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-
+projects.forEach((post) => {
+  console.log(post.data.published);
+});
+const publishedProjects = projects.filter((project) => project.data.published);
 interface Project {
   id: string;
   collection: string;
@@ -20,10 +23,10 @@ interface Project {
 
 <Layout title="Work">
   <ul
-    class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-4 gap-y-12"
+    class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-x-4 gap-y-12"
   >
     {
-      projects.map((project: Project) => {
+      publishedProjects.map((project: Project) => {
         return (
           <a
             href={

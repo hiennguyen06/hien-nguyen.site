@@ -1,6 +1,7 @@
 ---
 title: Object-based logistical contingency
 pubDate: 2024-03-20
+published: true
 tags: ["astro", "blogging"]
 ---
 

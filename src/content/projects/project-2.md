@@ -4,6 +4,7 @@ description: "Project 2 description"
 pubDate: 2021-01-01
 image: "https://placehold.co/600x600"
 tags: ["nextjs", "tailwind"]
+published: true
 ---
 
 Project 2 content

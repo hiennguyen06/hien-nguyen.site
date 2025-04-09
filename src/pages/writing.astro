@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import TagsList from "../components/TagsList.astro";
 import PostListItem from "../components/PostListItem.astro";
-const allBlogPosts = await getCollection("blog");
+const allBlogPosts = await getCollection("posts");
+
+const publishedBlogPosts = allBlogPosts.filter((post) => post.data.published);
 ---
 
 <Layout title="Blog">
@@ -11,6 +13,6 @@ const allBlogPosts = await getCollection("blog");
   <ul
     class="flex flex-col gap-4 max-md:gap-8 mt-4 border-dashed border-gray-200"
   >
-    {allBlogPosts.map((post: any) => <PostListItem post={post} />)}
+    {publishedBlogPosts.map((post: any) => <PostListItem post={post} />)}
   </ul>
 </Layout>
