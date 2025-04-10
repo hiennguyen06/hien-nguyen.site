@@ -3,7 +3,7 @@ const { post } = Astro.props;
 ---
 
 <a href={`/posts/${post.id}`} class="">
-  <article class="flex flex-row max-md:flex-col gap-8 max-md:gap-1">
+  <article class="flex flex-row max-md:flex-col-reverse gap-8 max-md:gap-1">
     <span class="text-gray-500">
       {
         new Date(post.data.pubDate).toLocaleDateString("en-US", {
