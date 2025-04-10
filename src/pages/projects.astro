@@ -3,9 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-projects.forEach((post) => {
-  console.log(post.data.published);
-});
+
 const publishedProjects = projects.filter((project) => project.data.published);
 interface Project {
   id: string;
@@ -17,13 +15,14 @@ interface Project {
     image: string;
     url?: string;
     external?: boolean;
+    description: string;
   };
 }
 ---
 
 <Layout title="Work">
   <ul
-    class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-x-4 gap-y-12"
+    class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-4 gap-y-12"
   >
     {
       publishedProjects.map((project: Project) => {
@@ -39,8 +38,11 @@ interface Project {
               <div class="relative aspect-[4/3] w-full overflow-hidden">
                 <img
                   src={project.data.image}
-                  alt={project.data.title}
-                  class="absolute inset-0 object-cover w-full h-full"
+                  alt={project.data.description}
+                  class="absolute inset-0 object-contain w-full h-full"
+                  loading="lazy"
+                  width={600}
+                  height={400}
                 />
               </div>
               <div>
@@ -57,7 +59,7 @@ interface Project {
                   </span>
                 </div>
 
-                <p class="text-gray-500">{project.data.tags.join(", ")}</p>
+                <p class="text-gray-500">{project.data.tags.join(" - ")}</p>
               </div>
             </li>
           </a>

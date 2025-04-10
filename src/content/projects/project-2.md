@@ -1,12 +1,10 @@
 ---
-title: "Project 2"
-description: "Project 2 description"
-pubDate: 2021-01-01
-image: "https://placehold.co/600x600"
-tags: ["nextjs", "tailwind"]
+title: "Codepens"
+description: "A collection of codepens I've made"
+pubDate: 2025-04-10
+image: "/src/assets/project-codepen-present.webp"
+tags: ["codepen", "html", "css", "javascript"]
 published: true
+external: true
+url: "https://codepen.io/hien-nguyen"
 ---
-
-Project 2 content
-
-![Project 2 image](/src/assets/background.svg)
