@@ -1,7 +1,7 @@
 ---
 title: "Codepens"
 description: "A collection of codepens I've made"
-pubDate: 2025-04-10
+pubYear: 2025
 image: "/src/assets/project-codepen-present.webp"
 tags: ["codepen", "html", "css", "javascript"]
 published: true
