@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
@@ -41,8 +42,8 @@ interface Project {
             }
           >
             <li class="flex flex-col gap-2">
-              <div class="relative aspect-[4/3] w-full overflow-hidden">
-                <img
+              <figure class="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
                   src={project.data.image}
                   alt={project.data.title}
                   class="absolute inset-0 object-contain w-full h-full"
@@ -50,7 +51,7 @@ interface Project {
                   width={600}
                   height={400}
                 />
-              </div>
+              </figure>
               <div>
                 <div class="flex items-center gap-2">
                   <h2>{project.data.title}</h2>
