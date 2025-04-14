@@ -4,7 +4,9 @@ import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
 
-const publishedProjects = projects.filter((project) => project.data.published);
+const publishedProjects = projects
+  .filter((project) => project.data.published)
+  .sort((a, b) => b.data.pubYear - a.data.pubYear);
 interface Project {
   id: string;
   collection: "projects";
@@ -24,7 +26,7 @@ interface Project {
 }
 ---
 
-<Layout title="Work">
+<Layout title="Projects">
   <ul
     class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-4 gap-y-12"
   >
