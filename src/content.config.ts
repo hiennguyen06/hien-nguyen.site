@@ -13,15 +13,16 @@ const posts = defineCollection({
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
-  schema: z.object({
-    title: z.string(),
-    pubYear: z.number(),
-    tags: z.array(z.string()),
-    image: z.string(),
-    published: z.boolean(),
-    external: z.boolean().optional(),
-    url: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      pubYear: z.number(),
+      tags: z.array(z.string()),
+      image: image(),
+      published: z.boolean(),
+      external: z.boolean().optional(),
+      url: z.string().optional(),
+    }),
 });
 
 export const collections = {
