@@ -5,7 +5,17 @@ import TagsList from "../components/TagsList.astro";
 import PostListItem from "../components/PostListItem.astro";
 const allBlogPosts = await getCollection("posts");
 
-const publishedBlogPosts = allBlogPosts.filter((post) => post.data.published);
+const publishedBlogPosts = allBlogPosts
+  .filter((post) => post.data.published)
+  .sort((a, b) => {
+    // Sort pinned posts first
+    if (a.data.pinned && !b.data.pinned) return -1;
+    if (!a.data.pinned && b.data.pinned) return 1;
+    // If both posts have same pinned status, sort by date
+    return (
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    );
+  });
 ---
 
 <Layout title="Writing">

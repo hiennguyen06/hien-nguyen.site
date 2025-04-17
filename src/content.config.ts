@@ -6,8 +6,9 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
-    tags: z.array(z.string()),
     published: z.boolean(),
+    tags: z.array(z.string()).optional(),
+    pinned: z.boolean().optional(),
   }),
 });
 
