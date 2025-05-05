@@ -3,13 +3,16 @@ import { defineCollection, z } from "astro:content";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.date(),
-    published: z.boolean(),
-    tags: z.array(z.string()).optional(),
-    pinned: z.boolean().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      image: image().optional(),
+      pubDate: z.date(),
+      published: z.boolean(),
+      tags: z.array(z.string()).optional(),
+      pinned: z.boolean().optional(),
+    }),
 });
 
 const projects = defineCollection({
@@ -21,6 +24,7 @@ const projects = defineCollection({
       tags: z.array(z.string()),
       image: image(),
       published: z.boolean(),
+      selected: z.boolean(),
       external: z.boolean().optional(),
       url: z.string().optional(),
     }),

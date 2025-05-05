@@ -3,18 +3,18 @@ import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("posts");
 const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
-const isActive = (tag: string) => Astro.params.tag === tag;
+const isActive = (tag: string) => Astro.params.tag === tag || false;
 ---
 
-<div class="flex gap-2 py-4">
+<div class="flex gap-2 pb-4">
   <ul class="flex gap-1 flex-wrap items-center">
     <li>
-      <span class="text-black">Tags:</span>
+      <span class="text-black font-bold text-sm">Tags:</span>
     </li>
     {
       tags.map((tag) => (
         <li
-          class={` border rounded-full px-2 py-1 ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
+          class={` border rounded-full px-4 py-0 text-sm ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
         >
           <a href={`/tags/${tag}`}>{tag}</a>
         </li>

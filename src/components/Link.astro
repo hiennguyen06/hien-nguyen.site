@@ -12,7 +12,7 @@ const isLinkActive = Astro.url.pathname === href;
 <a
   href={href}
   {...attributes}
-  class={`text-md ${isLinkActive ? "text-black " : "text-gray-500"} `}
+  class={`text-md ${isLinkActive ? "font-bold" : "font-normal"} text-black `}
 >
   {title}
 </a>

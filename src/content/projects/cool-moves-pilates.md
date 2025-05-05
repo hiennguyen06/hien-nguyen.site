@@ -7,4 +7,5 @@ tags: ["squarespace", "web design"]
 published: true
 external: true
 url: "https://coolmovespilates.com/"
+selected: false
 ---

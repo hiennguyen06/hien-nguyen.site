@@ -7,4 +7,5 @@ tags: ["nextjs", "tailwindcss", "typescript"]
 published: true
 external: true
 url: "https://photoshien.vercel.app/"
+selected: true
 ---

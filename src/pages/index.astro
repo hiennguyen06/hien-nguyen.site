@@ -1,37 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import profilePicture from "../assets/profile-picture.jpg";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { getCollection } from "astro:content";
 
-const lastUpdated = new Date("2025-04-06");
+const projects = await getCollection("projects");
+console.log(projects);
+const featuredProjects = projects.filter((project) => project.data.selected);
+const tags = projects.map((project) => project.data.tags).flat();
 ---
 
 <Layout title="Home">
   <main class="flex flex-col gap-4">
-    <div class="flex justify-start">
-      <figure class="w-full aspect-video">
-        <Image
-          src={profilePicture}
-          alt="A photo of me in Japan"
-          width={1600}
-          height={1200}
-          loading="lazy"
-          class="w-full h-full object-cover"
-        />
-        <figcaption class="text-sm text-center text-gray-500">
-          a photo of me in Japan
-        </figcaption>
-      </figure>
-    </div>
-    <section class="flex flex-col gap-4">
+    <section class="flex flex-col gap-4 pb-4">
       <p>
         Hi, I'm Hien, a front-end developer based in Melbourne. I'm interested
-        in code, design, and creative technologies.
-      </p>
-      <p>
-        In my free time, I enjoy <a
+        in code, design, and creative technologies. In my free time, I enjoy <a
           class="underline"
           href="https://photoshien.vercel.app/">photography</a
         >, <a class="underline" href="https://www.strava.com/athletes/57403103"
@@ -47,43 +29,56 @@ const lastUpdated = new Date("2025-04-06");
         > coding club since 2022.
       </p>
 
-      <p>
-        This website is always evolving and was built to document my interests
-        and hobbies. It was last updated on <time
-          datetime={lastUpdated.toISOString()}
-          >{lastUpdated.toLocaleDateString()}</time
-        >.
-      </p>
-      <section class="flex flex-col mt-2 border-t border-gray-300">
-        <ul class="flex flex-row gap-4 text-m flex-wrap py-4">
-          <li>
-            <a href="mailto:hiennguyen1529@gamil.com" class="underline">Email</a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/hiennguyen06" class="underline"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a href="https://codepen.io/hiennguyen1" class="underline"
-              >CodePen</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.are.na/hien-nguyen-z6srhz6468s/channels"
-              class="underline">Are.na</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://bsky.app/profile/hienmn.bsky.social"
-              class="underline">Bluesky</a
-            >
-          </li>
-        </ul>
-      </section>
+      <p>Currently learning Blender and Three.js.</p>
+    </section>
+
+    <hr class="border-gray-300" />
+
+    <section class="flex flex-col gap-4 py-4">
+      <h2 class="text-md font-bold">Selected Projects</h2>
+      <ul class="flex flex-col gap-4 text-m flex-wrap">
+        {
+          featuredProjects.map((project) => (
+            <li>
+              <a href={project.data.url} class="underline">
+                {project.data.title}
+              </a>
+              <div class="flex flex-row gap-4">
+                <p>{project.data.pubYear}</p>
+                <ul>
+                  <li>{project.data.tags.join(", ")}</li>
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <hr class="border-gray-300" />
+    <section class="flex flex-col py-4">
+      <ul class="flex flex-row gap-4 text-m flex-wrap">
+        <li>
+          <a href="mailto:hiennguyen1529@gamil.com" class="underline">Email</a>
+        </li>
+        <li>
+          <a href="https://github.com/hiennguyen06" class="underline">GitHub</a>
+        </li>
+        <li>
+          <a href="https://codepen.io/hiennguyen1" class="underline">CodePen</a>
+        </li>
+        <li>
+          <a
+            href="https://www.are.na/hien-nguyen-z6srhz6468s/channels"
+            class="underline">Are.na</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://bsky.app/profile/hienmn.bsky.social"
+            class="underline">Bluesky</a
+          >
+        </li>
+      </ul>
     </section>
   </main>
 </Layout>
