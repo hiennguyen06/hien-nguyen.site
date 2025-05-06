@@ -1,32 +1,43 @@
 ---
 const { post } = Astro.props;
 import { Image } from "astro:assets";
+
+const hasBody = (post.body && post.body.length > 0) || false;
 ---
 
-<a href={`/posts/${post.id}`}>
-  <article class="flex flex-col max-md:gap-1">
-    <span class="text-black font-bold text-sm">
-      {
-        new Date(post.data.pubDate).toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-        })
-      }
-    </span>
-    <p class="text-black text-md">{post.data.description}</p>
+<article class="flex flex-col max-md:gap-1">
+  <span class="text-black font-bold text-sm">
     {
-      post.data.image && (
-        <div class="relative aspect-square w-1/2 overflow-hidden">
-          <Image
-            src={post.data.image}
-            width={500}
-            height={500}
-            alt={post.data.title}
-            class="absolute inset-0 object-cover w-full h-full"
-          />
-        </div>
-      )
+      new Date(post.data.pubDate).toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
     }
-  </article>
-</a>
+  </span>
+  {
+    post.data.description && (
+      <p class="text-black text-md mb-2">{post.data.description}</p>
+    )
+  }
+  {
+    post.data.image && (
+      <div class="relative aspect-square w-1/2 overflow-hidden">
+        <Image
+          src={post.data.image}
+          width={500}
+          height={500}
+          alt={post.data.title}
+          class="absolute inset-0 object-cover w-full h-full"
+        />
+      </div>
+    )
+  }
+  {
+    post.body && (
+      <a href={`/posts/${post.id}`}>
+        <p class="text-black text-md underline">read more</p>
+      </a>
+    )
+  }
+</article>

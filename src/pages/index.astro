@@ -32,7 +32,7 @@ const tags = projects.map((project) => project.data.tags).flat();
       <p>Currently learning Blender and Three.js.</p>
     </section>
 
-    <hr class="border-gray-300" />
+    <hr class="border-gray-200" />
 
     <section class="flex flex-col gap-4 py-4">
       <h2 class="text-md font-bold">Selected Projects</h2>
@@ -43,18 +43,12 @@ const tags = projects.map((project) => project.data.tags).flat();
               <a href={project.data.url} class="underline">
                 {project.data.title}
               </a>
-              <div class="flex flex-row gap-4">
-                <p>{project.data.pubYear}</p>
-                <ul>
-                  <li>{project.data.tags.join(", ")}</li>
-                </ul>
-              </div>
             </li>
           ))
         }
       </ul>
     </section>
-    <hr class="border-gray-300" />
+    <hr class="border-gray-200" />
     <section class="flex flex-col py-4">
       <ul class="flex flex-row gap-4 text-m flex-wrap">
         <li>

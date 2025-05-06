@@ -19,9 +19,11 @@ const publishedBlogPosts = allBlogPosts
 ---
 
 <Layout title="Writing">
-  <TagsList />
+  <section class="flex gap-2 py-4">
+    <TagsList />
+  </section>
   <ul
-    class="flex flex-col gap-8 max-md:gap-8 mt-4 border-dashed border-gray-200"
+    class="flex flex-col gap-12 max-md:gap-8 mt-4 border-dashed border-gray-200"
   >
     {publishedBlogPosts.map((post: any) => <PostListItem post={post} />)}
   </ul>

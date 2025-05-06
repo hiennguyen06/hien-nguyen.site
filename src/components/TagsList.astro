@@ -2,23 +2,26 @@
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("posts");
-const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
+const tags = [
+  ...new Set(
+    allBlogPosts
+      .map((post) => post.data.tags)
+      .flat()
+      .filter((tag): tag is string => tag !== undefined)
+  ),
+];
 const isActive = (tag: string) => Astro.params.tag === tag || false;
 ---
 
-<div class="flex gap-2 pb-4">
-  <ul class="flex gap-1 flex-wrap items-center">
-    <li>
-      <span class="text-black font-bold text-sm">Tags:</span>
-    </li>
-    {
-      tags.map((tag) => (
-        <li
-          class={` border rounded-full px-4 py-0 text-sm ${isActive(tag) ? "text-black border-black" : "border-gray-200  text-gray-500"} `}
-        >
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </li>
-      ))
-    }
-  </ul>
-</div>
+<ul class="flex gap-1 flex-wrap items-center">
+  <span class="text-black font-bold text-sm">Tags:</span>
+  {
+    tags.map((tag) => (
+      <li
+        class={` border rounded-full px-4 py-0 text-sm text-black ${isActive(tag) ? "text-black border-black" : "border-gray-500 text-gray-500"} `}
+      >
+        <a href={`/tags/${tag}`}>{tag}</a>
+      </li>
+    ))
+  }
+</ul>
