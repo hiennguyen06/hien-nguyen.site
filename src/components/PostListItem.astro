@@ -36,7 +36,9 @@ const hasBody = (post.body && post.body.length > 0) || false;
   {
     post.body && (
       <a href={`/posts/${post.id}`}>
-        <p class="text-black text-md underline">read more</p>
+        <p class="text-gray-600 hover:text-black text-md underline">
+          read more
+        </p>
       </a>
     )
   }
