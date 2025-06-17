@@ -7,10 +7,10 @@ const featuredProjects = projects.filter((project) => project.data.selected);
 ---
 
 <Layout title="Home">
-  <main class="flex flex-col gap-4">
+  <main class="flex flex-col gap-2">
     <section class="flex flex-col gap-4 pb-2">
       <img
-        src="/src/assets/profile-picture.webp"
+        src="/profile-picture.webp"
         alt="Hien Nguyen"
         class="w-full aspect-video object-cover"
       />
@@ -37,7 +37,7 @@ const featuredProjects = projects.filter((project) => project.data.selected);
 
     <hr class="border-gray-200" />
 
-    <section class="flex flex-col gap-4 py-2">
+    <section class="flex flex-col gap-4 py-">
       <h2 class="text-md font-bold">Selected Projects</h2>
       <ul class="flex flex-col gap-4 text-m flex-wrap">
         {
