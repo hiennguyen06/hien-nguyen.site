@@ -7,6 +7,6 @@ pinned: true
 tags: ["web"]
 ---
 
-[Design Beyond Barriers](https://designbeyondbarriers.com)
+- [Design Beyond Barriers](https://designbeyondbarriers.com)
 
-[Writing Advice from Matt Stone & Trey Parker @ NYU | MTVU's "Stand In"](https://youtu.be/vGUNqq3jVLg?si=YSOJ0KH--gSJTUFm)
+- [Writing Advice from Matt Stone & Trey Parker @ NYU | MTVU's "Stand In"](https://youtu.be/vGUNqq3jVLg?si=YSOJ0KH--gSJTUFm)
