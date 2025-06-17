@@ -7,4 +7,4 @@ pinned: true
 tags: ["web"]
 ---
 
-[Writing Advice from Matt Stone & Trey Parker @ NYU | MTVU's "Stand In](https://www.youtube.com/watch?v=Zp6uP65lgjc)
+[Writing Advice from Matt Stone & Trey Parker @ NYU | MTVU's "Stand In](https://youtu.be/vGUNqq3jVLg?si=YSOJ0KH--gSJTUFm)
